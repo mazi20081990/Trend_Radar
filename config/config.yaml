@@ -121,25 +121,59 @@ rss:
       url: "https://hnrss.org/frontpage"
       enabled: false
 
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-      enabled: false
+    - id: "zuixinfabu"
+      name: "统计局最新发布"
+      url: "https://www.stats.gov.cn/sj/zxfb/rss.xml"
+      max_age_days: 7
 
-    - id: "gov-1"
-      name: "国务院政策"
-      url: "https://rsshub.app/gov/statecouncil/policy"
-      max_age_days: 30
+    - id: "shujujiedu"
+      name: "统计局数据解读"
+      url: "https://www.stats.gov.cn/sj/sjjd/rss.xml"
+      max_age_days: 7
 
-    - id: "fagai"
-      name: "发改委政策"
-      url: "https://rsshub.app/gov/ndrc/policy"
-      max_age_days: 30
+    - id: "chuangyi"
+      name: "中国创意"
+      url: "https://www.chinanews.com.cn/chuangyi/"
+      max_age_days: 3
 
-    - id: "anhui"
-      name: "安徽政策"
-      url: "https://rsshub.app/gov/anhui/gov"
-      max_age_days: 30
+    - id: "jishixinwen"
+      name: "中国即时新闻"
+      url: "中新网即时新闻 https://www.chinanews.com.cn/scroll-news/news1.html"
+      max_age_days: 1
+
+    - id: "guojixinwen"
+      name: "国际新闻"
+      url: "http://www.chinanews.com/world.shtml"
+      max_age_days: 1
+
+    - id: "guoke"
+      name: "果壳"
+      url: "https://rss.aishort.top/?type=guokr"
+      max_age_days: 5
+
+    - id: "zuixinzhengce"
+      name: "中国政府政策发布"
+      url: "https://rsshub.app/gov/zhengce/zuixin"
+      max_age_days: 15
+
+    - id: "gongxinbu"
+      name: "工信部文件发布"
+      url: "https://www.miit.gov.cn/api-gateway/jpaas-plugins-web-server/front/rss/getinfo?webId=8d828e408d90447786ddbe128d495e9e&columnIds=925fa8f4afd44e53818794ed96d9876e,30f92eeafcfd4685984dfb793a2c5fff"
+      max_age_days: 15
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -252,8 +286,8 @@ display:
     standalone: false # 独立展示区：完整热榜/RSS，不受关键词过滤（true=显示, false=隐藏）
     ai_analysis: true # AI 分析区域（true=显示, false=隐藏）
   standalone:
-    platforms: ["zhihu","wallstreetcn-hot","toutiao","douyin","tieba","cls-hot","bilibili-hot-search","thepaper","ifeng","weibo"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["my-tech","my-ai","gov-1","fagai","anhui"] # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["wallstreetcn-hot","toutiao","cls-hot","bilibili-hot-search","thepaper"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["my-tech","my-ai","gov-1","fagai","anhui","zuixinfabu","shujujiedu","chuangyi","jishixinwen","guojixinwen","guoke","zuixinzhengce","gongxinbu"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 5                                # 每个源最多展示条数（0=不限制）
 
 
@@ -428,7 +462,7 @@ ai_analysis:
                                     # follow_report = 跟随 report.mode（默认）
                                     # daily / current / incremental = 强制使用指定模式
 
-  max_news_for_analysis: 150        # 参与分析的新闻数量上限（控制 token 成本的关键项）
+  max_news_for_analysis: 100        # 参与分析的新闻数量上限（控制 token 成本的关键项）
                                     # 热榜优先占用配额，RSS 用剩余配额，独立展示区不受此限制
 
   include_rss: true                # 是否包含 RSS 内容进行分析（true=包含, false=不包含）
@@ -485,8 +519,8 @@ advanced:
   # 排序权重（用于重新排序不同平台的热搜）
   # 合起来等于 1
   weight:
-    rank: 0.5                        # 排名权重
-    frequency: 0.4                    # 频次权重
+    rank: 0.6                         # 排名权重
+    frequency: 0.3                    # 频次权重
     hotness: 0.1                      # 热度权重
 
   # 多账号限制
