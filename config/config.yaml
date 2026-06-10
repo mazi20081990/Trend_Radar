@@ -94,12 +94,12 @@ platforms:
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
 # ===============================================================
 rss:
-  enabled: true                       # 是否启用 RSS 抓取（true=启用, false=关闭）
+  enabled: false                       # 是否启用 RSS 抓取（true=启用, false=关闭）
 
   # 文章新鲜度过滤（过滤超龄旧文章，避免重复推送）
   # 仅在推送阶段过滤，所有文章仍会存入数据库
   freshness_filter:
-    enabled: true                     # 是否启用新鲜度过滤（true=启用, false=关闭）
+    enabled: false                     # 是否启用新鲜度过滤（true=启用, false=关闭）
 
     max_age_days: 2                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
@@ -113,14 +113,20 @@ rss:
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
+      enabled: false
 
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
+      enabled: false
 
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
+      enabled: false
+
+
+
 
 
 
@@ -220,7 +226,7 @@ display:
   regions:
     new_items: true # 新增热点区域：含热榜新增 + RSS 新增（true=显示, false=隐藏）
     hotlist: true # 热榜区域：关键词匹配 / AI 智能筛选（true=显示, false=隐藏）
-    rss: true # RSS 订阅区域（true=显示并分析, false=隐藏并跳过分析）
+    rss: false # RSS 订阅区域（true=显示并分析, false=隐藏并跳过分析）
     standalone: true # 独立展示区：完整热榜/RSS，不受关键词过滤（true=显示, false=隐藏）
     ai_analysis: true # AI 分析区域（true=显示, false=隐藏）
   standalone:
@@ -344,7 +350,7 @@ ai:
 
   model: "deepseek/deepseek-v4-flash"
 
-  api_key: ${{ secrets.API_KEY }}                       # API Key（建议使用环境变量 AI_API_KEY）
+  api_key: ""                       # API Key（建议使用环境变量 AI_API_KEY）
   
   api_base: ""                      # 自定义 API 地址（可选，绝大多数情况留空即可）
                                     #
