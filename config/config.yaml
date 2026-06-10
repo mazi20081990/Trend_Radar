@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: false                        # 是否启用调度系统（true=启用, false=关闭，默认关闭）
-  preset: "morning_evening"             # 预设模板名称（见上方说明）
+  preset: "office_hours"             # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -249,11 +249,11 @@ display:
     new_items: false # 新增热点区域：含热榜新增 + RSS 新增（true=显示, false=隐藏）
     hotlist: false # 热榜区域：关键词匹配 / AI 智能筛选（true=显示, false=隐藏）
     rss: true # RSS 订阅区域（true=显示并分析, false=隐藏并跳过分析）
-    standalone: true # 独立展示区：完整热榜/RSS，不受关键词过滤（true=显示, false=隐藏）
+    standalone: false # 独立展示区：完整热榜/RSS，不受关键词过滤（true=显示, false=隐藏）
     ai_analysis: true # AI 分析区域（true=显示, false=隐藏）
   standalone:
     platforms: ["zhihu","wallstreetcn-hot","toutiao","douyin","tieba","cls-hot","bilibili-hot-search","thepaper","ifeng","weibo"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["my-tech","my-ai","hacker-news","gov-1","fagai","anhui"] # RSS 源 ID 列表（如 ["hacker-news"]）
+    rss_feeds: ["my-tech","my-ai","gov-1","fagai","anhui"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 5                                # 每个源最多展示条数（0=不限制）
 
 
@@ -485,8 +485,8 @@ advanced:
   # 排序权重（用于重新排序不同平台的热搜）
   # 合起来等于 1
   weight:
-    rank: 0.6                         # 排名权重
-    frequency: 0.3                    # 频次权重
+    rank: 0.5                        # 排名权重
+    frequency: 0.4                    # 频次权重
     hotness: 0.1                      # 热度权重
 
   # 多账号限制
